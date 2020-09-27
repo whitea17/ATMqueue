@@ -4,7 +4,7 @@
 //  Blog:   https://blog.bltstack.dev
 //
 //  Program: ATM Queue
-//  Description
+//  Description:
 //      This program takes an input of information about a list of
 //      people who want to withdrawl money from an atm. Additional
 //      information provided includes the number of people in line
@@ -15,7 +15,7 @@
 //      Outputs the final order of people leaving the atm once the
 //      have withdrawled their desired amount of money. Note, each
 //      line is for a specific test case aka line of people and atm
-//      max
+//      max.
 
 #include <iostream>
 #include <queue>
@@ -37,7 +37,6 @@ int main() {
         int numPeople = 0;
         int max_withdrawl = 0;
         string people_string = "";
-        string trash = "";
 
         cin >> numPeople;
         cin >> max_withdrawl;
@@ -47,24 +46,24 @@ int main() {
         stringstream people_wants_raw(people_string);
 
         // Debug:
-        // cout << "D: numPeople: " << numPeople << endl;
-        // cout << "D: max_w: " << max_withdrawl << endl;
-        // cout << "D: people: " << people_string << endl;
+        //  cout << "D: numPeople: " << numPeople << endl;
+        //  cout << "D: max_w: " << max_withdrawl << endl;
+        //  cout << "D: people: " << people_string << endl;
         
 
 
         // Paralell queues
         queue<int> people;
         queue<int> money_wanted_list;
-        queue<int> out;
+        string out = "";
+        int tmp;
 
         // load people id(num) and want of money into queues
         for(int i = 1; i < numPeople + 1; i++){
+            people_wants_raw >> tmp;
             people.push(i);
-            int money = 0;
-            people_wants_raw >> money;
-
-            money_wanted_list.push(money);
+ 
+            money_wanted_list.push(tmp);
         }
 
         // people and money_wanted are paralell and should be the same size no matter what
@@ -84,7 +83,7 @@ int main() {
             // Use atm
             if(money_wanted <= max_withdrawl){
                 // Got enough money, Leave line
-                out.push(person);
+                out = out + " " + to_string(person);
             }else{
                 // withdrawl max money from atm
                 money_wanted -= max_withdrawl;
@@ -98,10 +97,7 @@ int main() {
 
         // outputs order of people 
         cout << "Case #" << (numTests - i) + 1<< ": ";
-        while(!out.empty()){
-            cout << out.front() << " ";
-            out.pop();
-        }
+        cout << out;
         cout << endl;
     }
 }
