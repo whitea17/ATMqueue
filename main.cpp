@@ -26,7 +26,7 @@ using namespace std;
 
 int main() {
 
-    int numTests;
+    int numTests = 0;
 
     cin >> numTests;
 
@@ -34,8 +34,8 @@ int main() {
     //cout << "D: numTests: " << numTests << endl;
 
     for(int i = numTests; i > 0; i--){
-        int numPeople;
-        int max_withdrawl;
+        int numPeople = 0;
+        int max_withdrawl = 0;
         // string people_string = "";
 
         cin >> numPeople;
@@ -55,7 +55,7 @@ int main() {
         // Paralell queues
         queue<int> people;
         queue<int> money_wanted_list;
-        string out;
+        string out = "";
         int tmp;
 
         // load people id(num) and want of money into queues
@@ -65,6 +65,13 @@ int main() {
  
             money_wanted_list.push(tmp);
         }
+
+        // Disabled for time effiency
+        // // people and money_wanted are paralell and should be the same size no matter what
+        // if(people.size() != money_wanted_list.size()){
+        //     cout << "Parsing error, please review input and try again.\nGoodbye :)";
+        //     exit(1);
+        // }        
 
     
         while(!people.empty()){
