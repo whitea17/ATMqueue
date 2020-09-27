@@ -25,12 +25,10 @@
 using namespace std;
 
 int main() {
-    string input_parm = "2\n3 3\n2 7 4\n5 6\n9 10 4 7 2";
-    stringstream input_raw(input_parm);
 
     int numTests = 0;
 
-    input_raw >> numTests;
+    cin >> numTests;
 
     // Debug:
     //cout << "D: numTests: " << numTests << endl;
@@ -41,11 +39,11 @@ int main() {
         string people_string = "";
         string trash = "";
 
-        input_raw >> numPeople;
-        input_raw >> max_withdrawl;
-        input_raw.ignore();
+        cin >> numPeople;
+        cin >> max_withdrawl;
+        cin.ignore();
 
-        getline(input_raw, people_string);
+        getline(cin, people_string);
         stringstream people_wants_raw(people_string);
 
         // Debug:
